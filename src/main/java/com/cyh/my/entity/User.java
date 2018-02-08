@@ -13,7 +13,7 @@ public class User extends Po {
     private Integer id;
     private String userName;
     private String passWord;
-    private Date registerTime;
+    private String registerTime;
     private String nickName;
 
     @Override
@@ -51,11 +51,11 @@ public class User extends Po {
         this.passWord = passWord;
     }
 
-    public Date getRegisterTime() {
+    public String getRegisterTime() {
         return registerTime;
     }
 
-    public void setRegisterTime(Date registerTime) {
+    public void setRegisterTime(String registerTime) {
         this.registerTime = registerTime;
     }
 

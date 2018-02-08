@@ -17,4 +17,9 @@ public class UserService implements IUserService {
     public List<User> getAllUser() {
         return userDao.list();
     }
+
+    @Override
+    public int addUser(User user) {
+        return userDao.add(user);
+    }
 }

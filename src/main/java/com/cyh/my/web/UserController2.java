@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -25,5 +27,20 @@ public class UserController2 {
     public String list(Model model) {
         List<User> allUser = userService.getAllUser();
         return JSON.toJSONString(allUser);
+    }
+
+    @RequestMapping(value = "/user/add", produces = "text/json;charset=utf-8")
+    @ResponseBody
+    public String add(Model model) {
+        for (int i = 0; i < 99; i++) {
+            User user = new User();
+            user.setUserName("user" + i);
+            user.setPassWord(Md5.getMD5("" + i));
+
+            user.setRegisterTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            user.setNickName("nickName" + i);
+            userService.addUser(user);
+        }
+        return "";
     }
 }
