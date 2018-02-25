@@ -16,7 +16,7 @@
 <script>
     $(function () {
         $("img.lazy").lazyload();
-        $("img.lazy").css("width", "100%");
+        $("img.lazy").css("max-width", "100%");
         $("img.lazy").css("height", "auto");
     });
 </script>
