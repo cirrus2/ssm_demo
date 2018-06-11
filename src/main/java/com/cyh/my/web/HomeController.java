@@ -82,8 +82,8 @@ public class HomeController {
             return new ModelAndView("redirect:/");
         }
 
-        String str = HttpRequest.sendGet("https://wap.ithome.com" + url, "");
-        String patten = "<title>(.+?)</title>.+?paragraph(.+?)newserror";
+        String str = HttpRequest.sendGet("https://m.ithome.com" + url, "");
+        String patten = "<title>(.+?)</title>.+?news-content(.+?)news-footer";
         Pattern compile = Pattern.compile(patten);
         Matcher matcher = compile.matcher(str);
 
@@ -92,10 +92,11 @@ public class HomeController {
         if (matcher.find()) {
             title = matcher.group(1);
             content = matcher.group(2);
-            content = content.substring(2, content.length() - 12);
+            content = content.substring(2, content.length() - 26);
             content = content.trim();
         }
 
+        System.out.println(title + content);
         model.addAttribute("title", title);
         model.addAttribute("content", content);
         return new ModelAndView("my/detail");
